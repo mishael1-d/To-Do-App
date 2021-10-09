@@ -1,38 +1,232 @@
-.App {
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: blanchedalmond;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  background-color: white;
+  background-image: url("./images/bg.svg");
+  background-repeat: no-repeat;
+  width: 428px;
+  height: 926px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  position: relative;
+  border-radius: 10px;
+}
+.container1 {
+  background-color: white;
+  width: 428px;
+  height: 926px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 20px auto;
+  position: relative;
+  border-radius: 10px;
+}
+
+.welcome {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.welcome h4 {
+  text-transform: uppercase;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.welcome p {
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.btn {
+  background: #50b2b2;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 15px 50px;
+  border-radius: 25px 0 25px 0;
+}
+.btn:hover {
+  opacity: 0.7;
+}
+.l-btn {
+  position: relative;
+  top: 320px;
+}
+.task p {
+  font-size: 35px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: capitalize;
+}
+.task img {
+  position: relative;
+  top: -395px;
+  left: -100px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.footer {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
   align-items: center;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.footer img {
+  position: relative;
+  left: -5px;
+  top: 0px;
+  height: 23px;
+  width: 23px;
+}
+
+.items{
+  height: 80%;
+}
+.items input {
+  width: 387px;
+  height: 60px;
+  margin: 20px;
+  border-radius: 40px;
+  border: 1px solid #50b2b2;
+  text-align: center;
+  font-size: 20px;
+}
+input::placeholder {
+  color: #787676;
+  font-size: 15px;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+}
+.items img {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.items img:hover {
+  opacity: 1;
+}
+.items button {
+  display: flex;
+  justify-content: center;
+  margin:  auto;
+  cursor: pointer;
+  position: static;
+  align-items: center;
+}
+.popup {
+  width: 181px;
+  height: 136px;
+  border: 2px solid #50b2b2;
+  color: black;
+  padding: 10px;
+  position: absolute;
+  bottom: 50px;
+  text-align: center;
+  display: inline-block;
+  z-index: 1;
 }
 
-.App-link {
-  color: #61dafb;
+.popup li {
+  list-style-type: none;
+  text-transform: capitalize;
+  text-decoration: underline;
+  margin: 10px 0;
+  font-size: 20px;
+  cursor: pointer;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.item {
+  width: 387px;
+  height: 50px;
+  margin: 20px;
+  background: #a5e6e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2px;
+}
+.item p {
+  margin-left: 10px;
+  text-transform: capitalize;
+}
+.item img {
+  opacity: 0.5;
+}
+.action {
+  display: flex;
+  justify-content: space-between;
+}
+.action img {
+  background: white;
+  padding: 10px;
+  margin: 0 10px;
+}
+.savemodal {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  border-bottom: 2px solid red;
+}
+.savemodal .input {
+  border: none;
+  outline: none;
+  text-align: left;
+  width: 350px;
+  height: 50px;
+  margin: 0;
+  position: relative;
+  left: 0;
+  border-radius: 0;
+}
+.savemodal .input::placeholder {
+  text-align: left;
+}
+.savemodal .input:active{
+  border: none;
+  outline: none;
+}
+.modal {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: 10px;
+  width: fit-content;
+  padding: 10px;
+}
+.modal-danger {
+  background: rgb(212, 209, 209);
+  color: red;
+}
+.modal-success {
+  background: rgb(212, 209, 209);
+  color: green;
+}
+.scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
 }
