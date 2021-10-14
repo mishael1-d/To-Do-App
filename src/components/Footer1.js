@@ -8,7 +8,7 @@ function Footer1() {
     return (
         <div className="footer">
             <img src={menu} alt=""/>
-            <img src={home} alt="" onClick={homepage}/>
+            <img src={home} alt="" onClick={homepage.homepage}/>
             <img src={profile} alt=""/>
         </div>
     )

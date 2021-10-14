@@ -1,18 +1,20 @@
 import React from "react";
 import "./App.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Items from "./components/Items";
 import Task from "./components/Task";
 import Welcome from "./components/Welcome";
-// import Items from "./components/Items";
-
+import TaskAdded from "./components/TaskAdded"
+import {TitleContext} from "./components/Items"
 export const PopupContext = React.createContext();
 export const Hompage = React.createContext();
-console.log(PopupContext.Provider.value);
+
 function App() {
   const [ready, setIsReady] = useState(false);
   const [renderList, setRenderList] = useState(false);
   const [home, setHome] = useState(false);
+  const [taskadded, settaskadded] = useState(false)
+  const title = useContext(TitleContext);
   const clickHandler = () => {
     setTimeout(() => {
       setIsReady(!ready);
@@ -37,15 +39,21 @@ function App() {
       }
     }, 100);
   };
+  const taskPresent = () => {
+    if (title !== '') {
+      settaskadded(!taskadded);
+    }
+  }
   return (
     <>
       <div className="">
-        {home && ready ? (
+        {taskadded ? <TaskAdded/>:
+        home && ready ? (
           <PopupContext.Provider value={render}>
             <Task click={clickHandler} />
           </PopupContext.Provider>
         ) : renderList ? (
-          <Hompage.Provider value={homepage}>
+          <Hompage.Provider value={{homepage, taskPresent}}>
             <Items />
           </Hompage.Provider>
         ) : ready ? (

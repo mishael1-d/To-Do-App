@@ -1,11 +1,13 @@
-import React, { useReducer, useState, useRef, useEffect } from "react";
+import React, { useReducer, useState, useRef, useEffect, useContext } from "react";
 import Footer1 from "./Footer1";
 import add from "../images/add.svg";
 import tick from "../images/tick.svg";
 import del from "../images/del.svg";
 import Modal from "./Modal";
 import Scroll from "./Scroll";
+import {Hompage} from '../App'
 
+export const TitleContext = React.createContext();
 const reducer = (state, action) => {
   if (action.type === "ADD_ITEM") {
     const newItem = [...state.items, action.payload];
@@ -23,6 +25,15 @@ const reducer = (state, action) => {
       ...state,
       isModalOpen: true,
       modalContent: "please enter a value",
+      openSaveModal: false,
+      type: "danger",
+    };
+  }
+  if (action.type === "NO_ITEM") {
+    return {
+      ...state,
+      isModalOpen: true,
+      modalContent: "can't submit empty list",
       openSaveModal: false,
       type: "danger",
     };
@@ -62,11 +73,18 @@ const reducer = (state, action) => {
       openSaveModal: true,
     };
   }
-  if (action.type === "SAVE") {
-    const title = action.payload
+  if (action.type === "SUBMIT") {
     return {
+      ...state,
+      openSaveModal: false,
+    };
+  }
+  if (action.type === "SAVE") {
+    const title = action.payload;
+    return {
+      ...state,
       title: title,
-      openSaveModal: true,
+      openSaveModal: false,
     };
   }
   throw new Error("no matching action");
@@ -78,18 +96,22 @@ const defaultState = {
   modalContent: "",
   openSaveModal: false,
   type: "success",
-  title: ""
+  title: "",
 };
 
 const Items = () => {
   const [input, setInput] = useState("");
   const [state, dispatch] = useReducer(reducer, defaultState);
   const [savetext, setSaveText] = useState("");
-  const inputRef = useRef(null)
+  const [textTitle, setTextTitile] = useState([]);
+  const inputRef = useRef(null);
+  const itemRef = useRef(null)
+  const task_added = useContext(Hompage)
+  
 
-  useEffect(()=>{
-    inputRef.current.focus()
-  }, [])
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("clicked a button");
@@ -107,14 +129,29 @@ const Items = () => {
     dispatch({ type: "CLOSE_MODAL" });
   };
 
-  
   const handleSave = (e) => {
     e.preventDefault();
-    if(savetext) {
+    if (savetext) {
       const title = savetext;
-      dispatch({type: "SAVE", payload: title})
+      dispatch({ type: "SAVE", payload: title });
     }
-  }
+    setSaveText("");
+    state.openSaveModal = false;
+  };
+  const done = () => {
+    if (state.items.length === 0) {
+      dispatch({ type: "NO_ITEM" });
+    } 
+    if (state.items.length > 0) {
+      dispatch({ type: "DONE" });
+    }
+    if (state.items.length > 0 && state.title) {
+      console.log('it works')
+      dispatch({type: "SUBMIT"})
+      task_added.taskPresent()
+    }
+    setTextTitile([...textTitle, state.title])
+  };
   return (
     <>
       <div className="container1">
@@ -126,7 +163,21 @@ const Items = () => {
               type={state.type}
             />
           )}
-          {!state.openSaveModal && <h4>{state.title}</h4>}
+          {state.title && (
+            <TitleContext.Provider value={textTitle}>
+                console.log(TitleContext.Provider)
+            <h4
+              style={{
+                textAlign: "center",
+                paddingTop: 10,
+                color: "grey",
+                fontStyle: "italic",
+              }}
+            >
+              {state.title}
+            </h4>
+            </TitleContext.Provider>
+          )}
           <input
             type="text"
             ref={inputRef}
@@ -138,7 +189,7 @@ const Items = () => {
           <Scroll>
             {state.items.map((item) => {
               return (
-                <div className="item" key={item.id}>
+                <div className="item" key={item.id} ref={itemRef}>
                   <p>{item.input}</p>
                   <div className="action">
                     <img
@@ -161,10 +212,11 @@ const Items = () => {
             })}
           </Scroll>
           {state.openSaveModal ? (
-            <div className="savemodal">
+            <div className="savemodal" ref={inputRef}>
               <input
                 className="input"
                 type="text"
+                
                 placeholder="** add a title"
                 value={savetext}
                 onChange={(e) => setSaveText(e.target.value)}
@@ -174,11 +226,14 @@ const Items = () => {
               </button>
             </div>
           ) : (
-            <button className="btn" onClick={() => dispatch({ type: "DONE" })}>
+            <button
+              className="btn"
+              onClick={done}
+            >
               DONE
             </button>
           )}
-          <Footer1/>
+          <Footer1 />
         </div>
       </div>
     </>
