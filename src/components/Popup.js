@@ -4,7 +4,6 @@ import {PopupContext} from '../App'
 
 function Popup() {
     const popup = useContext(PopupContext);
-    console.log(popup);
     return (
         <div className="popup">
             <ul>

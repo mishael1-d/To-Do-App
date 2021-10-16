@@ -15,6 +15,7 @@ function App() {
   const [home, setHome] = useState(false);
   const [taskadded, settaskadded] = useState(false)
   const title = useContext(TitleContext);
+  console.log(title);
   const clickHandler = () => {
     setTimeout(() => {
       setIsReady(!ready);
@@ -24,7 +25,6 @@ function App() {
     setTimeout(() => {
       setRenderList(!renderList);
     }, 100);
-    console.log("btn clicked");
     if (ready && !renderList) {
       setHome(false);
     }

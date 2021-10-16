@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react';
 import arrow from "../images/back-arrow.svg";
 import Footer from "./Footer";
 import Popup from "./Popup";
@@ -8,7 +8,6 @@ function TaskAdded(props) {
   const { click} = props;
   const [popup, setPopup] = useState(false);
   const title = useContext(TitleContext);
-  console.log(title);
   const togglePopup = () => {
     setTimeout(() => {
       setPopup(!popup);
@@ -23,10 +22,9 @@ function TaskAdded(props) {
             alt="Back"
             onClick={click}
           />
-          <p>lorem100
-          </p>
+          <p>{title}</p>
           {popup && <Popup/>}
-          <Footer className='task-footer'/>
+          <Footer className='task-footer' addnew={togglePopup}/>
         </div>
       </div>
     </>

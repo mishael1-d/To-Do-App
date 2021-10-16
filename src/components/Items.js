@@ -114,12 +114,10 @@ const Items = () => {
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("clicked a button");
     if (input) {
       const newItem = { id: new Date().getTime().toString(), input };
       dispatch({ type: "ADD_ITEM", payload: newItem });
       setInput("");
-      console.log(newItem);
     } else {
       dispatch({ type: "NO_VALUE" });
     }
@@ -146,7 +144,6 @@ const Items = () => {
       dispatch({ type: "DONE" });
     }
     if (state.items.length > 0 && state.title) {
-      console.log('it works')
       dispatch({type: "SUBMIT"})
       task_added.taskPresent()
     }
@@ -171,6 +168,7 @@ const Items = () => {
                 paddingTop: 10,
                 color: "grey",
                 fontStyle: "italic",
+                textTransform: "capitalize"
               }}
             >
               {state.title}

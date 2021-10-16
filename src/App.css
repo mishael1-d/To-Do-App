@@ -90,6 +90,7 @@ body {
   margin: 10px 5px;
   width: 20px;
   height: 15px;
+  cursor: pointer;
 }
 .items{
   height: 100%;
@@ -249,4 +250,5 @@ input::placeholder {
   margin: 10px 5px;
   width: 20px;
   height: 15px;
+  cursor: pointer;
 }
