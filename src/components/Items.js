@@ -165,7 +165,6 @@ const Items = () => {
           )}
           {state.title && (
             <TitleContext.Provider value={textTitle}>
-                console.log(TitleContext.Provider)
             <h4
               style={{
                 textAlign: "center",
@@ -185,7 +184,7 @@ const Items = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <img src={add} alt="" onClick={handleSubmit} />
+          <img className='add' src={add} alt="" onClick={handleSubmit} />
           <Scroll>
             {state.items.map((item) => {
               return (

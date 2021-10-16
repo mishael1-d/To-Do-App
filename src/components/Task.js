@@ -17,6 +17,7 @@ function Task(props) {
       <div className="container">
         <div className="task">
           <img
+          className='Backward_arrow'
             src={arrow}
             alt="Back"
             onClick={ 

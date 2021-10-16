@@ -16,16 +16,17 @@ function TaskAdded(props) {
   };
   return (
     <>
-      <div className="container1">
+      <div className="container">
         <div className="taskadded">
-          <img className='arrow'
+          <img className='Backward_arrow'
             src={arrow}
             alt="Back"
             onClick={click}
           />
-          <p>{title}</p>
+          <p>lorem100
+          </p>
           {popup && <Popup/>}
-          <Footer addnew={togglePopup} />
+          <Footer className='task-footer'/>
         </div>
       </div>
     </>

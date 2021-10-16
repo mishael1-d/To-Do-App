@@ -6,7 +6,11 @@
 
 body {
   background-color: blanchedalmond;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -14,123 +18,106 @@ body {
   background-color: white;
   background-image: url("./images/bg.svg");
   background-repeat: no-repeat;
-  width: 428px;
-  height: 926px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto;
-  position: relative;
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 600px;
   border-radius: 10px;
 }
 .container1 {
   background-color: white;
-  width: 428px;
-  height: 926px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 20px auto;
-  position: relative;
-  border-radius: 10px;
-}
-.container2 {
-  background-color: white;
-  background-image: url("./images/bg.svg");
-  background-repeat: no-repeat;
-  width: 428px;
-  height: 926px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 20px auto;
-  position: relative;
+  width: 300px;
+  height: 600px;
+  /* align-items: flex-start; */
+  margin: 0 auto;
   border-radius: 10px;
 }
 
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  cursor: pointer;
+}
 .welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  height: 100%;
 }
 .welcome h4 {
   text-transform: uppercase;
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
   margin-bottom: 15px;
 }
 .welcome p {
-  font-size: 15px;
+  max-width: 250px;
+  font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
 }
-.btn {
+.welcome .btn {
   background: #50b2b2;
   border: none;
   text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
-  padding: 15px 50px;
-  border-radius: 25px 0 25px 0;
+  padding: 10px;
+  border-radius: 15px 0 15px 0;
+  position: fixed;
+  bottom: 55px;
 }
 .btn:hover {
   opacity: 0.7;
 }
-.l-btn {
-  position: relative;
-  top: 320px;
+
+.task {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  height: 100%;
 }
 .task p {
-  font-size: 35px;
+  font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   text-transform: capitalize;
 }
-.task img {
-  position: relative;
-  top: -395px;
-  left: -100px;
-  font-weight: bold;
-  cursor: pointer;
+.task .Backward_arrow {
+  margin: 10px 5px;
+  width: 20px;
+  height: 15px;
 }
-.footer {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  height: 50px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.footer img {
-  position: relative;
-  left: -5px;
-  top: 0px;
-  height: 23px;
-  width: 23px;
-}
-
 .items{
-  height: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
 }
 .items input {
-  width: 387px;
-  height: 60px;
-  margin: 20px;
-  border-radius: 40px;
+  width: 250px;
+  height: 40px;
+  margin: 10px auto;
+  border-radius: 20px;
   border: 1px solid #50b2b2;
   text-align: center;
-  font-size: 20px;
+  font-size: 15px;
+
 }
 input::placeholder {
   color: #787676;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
   font-style: italic;
   text-align: center;
 }
-.items img {
+.items .add {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
   cursor: pointer;
@@ -139,24 +126,29 @@ input::placeholder {
   opacity: 1;
 }
 .items button {
-  display: flex;
-  justify-content: center;
-  margin:  auto;
+  background: #50b2b2;
+  border: none;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: bold;
   cursor: pointer;
-  position: static;
-  align-items: center;
+  padding: 10px 15px;
+  border-radius: 10px;
+  display: flex;
+  margin: 10px auto;
 }
 .popup {
-  width: 181px;
-  height: 136px;
-  border: 2px solid #50b2b2;
+  width: 130px;
   color: black;
   padding: 10px;
-  position: absolute;
-  bottom: 50px;
   text-align: center;
   display: inline-block;
-  z-index: 1;
+  z-index: 10;
+  text-align: center;
+  margin: 0 auto;
+  position: fixed;
+  left: 36%;
+  top: 73%;
 }
 
 .popup li {
@@ -164,13 +156,13 @@ input::placeholder {
   text-transform: capitalize;
   text-decoration: underline;
   margin: 10px 0;
-  font-size: 20px;
+  font-size: 15px;
   cursor: pointer;
 }
 .item {
-  width: 387px;
-  height: 50px;
-  margin: 20px;
+  width: 90%;
+  height: 30px;
+  margin: 15px auto;
   background: #a5e6e6;
   display: flex;
   justify-content: space-between;
@@ -180,6 +172,7 @@ input::placeholder {
 .item p {
   margin-left: 10px;
   text-transform: capitalize;
+  font-size: 12px;
 }
 .item img {
   opacity: 0.5;
@@ -190,23 +183,24 @@ input::placeholder {
 }
 .action img {
   background: white;
-  padding: 10px;
-  margin: 0 10px;
+  padding: 10px 5px;
+  display: flex;
+  margin-left: 5px;
 }
 .savemodal {
-  width: 400px;
+  width: 230px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px auto;
-  border-bottom: 4px solid red;
+  margin: 10px auto;
+  border-bottom: 2px solid red;
 }
 .savemodal .input {
   border: none;
   outline: none;
   text-align: left;
-  width: 350px;
-  height: 50px;
+  width: 150px;
+  height: 30px;
   margin: 0;
   position: relative;
   left: 0;
@@ -224,9 +218,10 @@ input::placeholder {
   margin: 0 auto;
   text-align: center;
   text-transform: capitalize;
-  margin-top: 10px;
+  margin-top: 5px;
   width: fit-content;
-  padding: 10px;
+  padding: 5px;
+  font-size: 10px;
 }
 .modal-danger {
   background: rgb(212, 209, 209);
@@ -243,15 +238,15 @@ input::placeholder {
 .scroll::-webkit-scrollbar {
   display: none;
 }
-.taskadded .arrow{
-  position: absolute;
-  left: 0;
-  margin: 20px 10px;
-  cursor: pointer;
-  background-color: #50b2b2;
+.taskadded {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
-.taskadded p {
-  position: relative;
-  top: 150px;
-  text-align: left;
+
+.taskadded .Backward_arrow {
+  margin: 10px 5px;
+  width: 20px;
+  height: 15px;
 }

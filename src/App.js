@@ -63,6 +63,7 @@ function App() {
         ) : (
           <Welcome click={clickHandler} />
         )}
+        {/* <Items/> */}
       </div>
     </>
   );
