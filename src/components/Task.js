@@ -3,9 +3,7 @@ import arrow from "../images/back-arrow.svg";
 import Footer from "./Footer";
 import Popup from "./Popup";
 
-function Task(props) {
-  const { click} = props;
-  
+function Task({click}) {
   const [popup, setPopup] = useState(false);
   const togglePopup = () => {
     setTimeout(() => {

@@ -103,7 +103,7 @@ const Items = () => {
   const [input, setInput] = useState("");
   const [state, dispatch] = useReducer(reducer, defaultState);
   const [savetext, setSaveText] = useState("");
-  const [textTitle, setTextTitile] = useState([]);
+  const [textTitle, setTextTitle] = useState([]);
   const inputRef = useRef(null);
   const itemRef = useRef(null)
   const task_added = useContext(Hompage)
@@ -147,7 +147,7 @@ const Items = () => {
       dispatch({type: "SUBMIT"})
       task_added.taskPresent()
     }
-    setTextTitile([...textTitle, state.title])
+    setTextTitle([...textTitle, state.title])
   };
   return (
     <>
@@ -162,6 +162,7 @@ const Items = () => {
           )}
           {state.title && (
             <TitleContext.Provider value={textTitle}>
+              {console.log(TitleContext.Provider.value)}
             <h4
               style={{
                 textAlign: "center",

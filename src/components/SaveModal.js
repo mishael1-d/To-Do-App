@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-function SaveModal(props) {
-  const { closeModal } = props;
+function SaveModal({ closeModal }) {
   const [text, setText] = useState("");
   const handleSave = (e) => {
     e.preventDefault();
@@ -9,7 +8,6 @@ function SaveModal(props) {
       const save = text;
       setText(save);
     }
-    console.log(text);
     setText("");
   };
   return (

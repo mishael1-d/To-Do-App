@@ -1,7 +1,6 @@
 import React from "react";
 
-function Welcome(props) {
-  const {click} = props;
+function Welcome({click}) {
   return (
     <>
     
@@ -12,7 +11,7 @@ function Welcome(props) {
             Start your day well, failure to plan for the future <br /> is
             planning to fail.
           </p>
-          <button className="btn l-btn" onClick={()=>{click()}}>
+          <button className="btn" onClick={()=>{click()}}>
             let's go!!
           </button>
         </div>
