@@ -8,6 +8,7 @@ import Scroll from "./Scroll";
 import {Hompage} from '../App'
 
 export const TitleContext = React.createContext();
+
 const reducer = (state, action) => {
   if (action.type === "ADD_ITEM") {
     const newItem = [...state.items, action.payload];
@@ -112,6 +113,7 @@ const Items = () => {
   useEffect(() => {
     inputRef.current.focus();
   }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input) {
@@ -136,6 +138,7 @@ const Items = () => {
     setSaveText("");
     state.openSaveModal = false;
   };
+
   const done = () => {
     if (state.items.length === 0) {
       dispatch({ type: "NO_ITEM" });
@@ -149,10 +152,12 @@ const Items = () => {
     }
     setTextTitle([...textTitle, state.title])
   };
+  
   return (
     <>
       <div className="container1">
         <div className="items">
+          {/* if modalopen state = true display the modal component */}
           {state.isModalOpen && (
             <Modal
               closeModal={closeModal}
@@ -160,9 +165,9 @@ const Items = () => {
               type={state.type}
             />
           )}
+          {/* render title start */}
           {state.title && (
-            <TitleContext.Provider value={textTitle}>
-              {console.log(TitleContext.Provider.value)}
+            <TitleContext.Provider value={state.title}>
             <h4
               style={{
                 textAlign: "center",
@@ -173,9 +178,11 @@ const Items = () => {
               }}
             >
               {state.title}
+              {console.log(state.title)}
             </h4>
             </TitleContext.Provider>
           )}
+          {/* render title ends */}
           <input
             type="text"
             ref={inputRef}
@@ -185,6 +192,7 @@ const Items = () => {
           />
           <img className='add' src={add} alt="" onClick={handleSubmit} />
           <Scroll>
+            {/* List of items start */}
             {state.items.map((item) => {
               return (
                 <div className="item" key={item.id} ref={itemRef}>
@@ -208,7 +216,9 @@ const Items = () => {
                 </div>
               );
             })}
+            {/* List of items end */}
           </Scroll>
+          {/* if opensavemodal = true then display the save btn else display the done btn --starts */}
           {state.openSaveModal ? (
             <div className="savemodal" ref={inputRef}>
               <input
@@ -231,6 +241,7 @@ const Items = () => {
               DONE
             </button>
           )}
+          {/* if opensavemodal = true then display the save btn else display the done btn --ends */}
           <Footer1 />
         </div>
       </div>

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useContext }  from "react";
 import "./App.css";
-import { useState, useContext } from "react";
 import Items from "./components/Items";
 import Task from "./components/Task";
 import Welcome from "./components/Welcome";
 import TaskAdded from "./components/TaskAdded"
 import {TitleContext} from "./components/Items"
+
 export const PopupContext = React.createContext();
 export const Hompage = React.createContext();
 
@@ -15,12 +15,15 @@ function App() {
   const [home, setHome] = useState(false);
   const [taskadded, settaskadded] = useState(false)
   const title = useContext(TitleContext);
-  console.log(title);
+
+//Open the welcome page
   const clickHandler = () => {
     setTimeout(() => {
       setIsReady(!ready);
     }, 500);
   };
+
+  //Function to render the items 
   const render = () => {
     setTimeout(() => {
       setRenderList(!renderList);
@@ -29,6 +32,8 @@ function App() {
       setHome(false);
     }
   };
+
+  //Home button function
   const homepage = () => {
     setTimeout(() => {
       setHome(!home);
@@ -39,6 +44,8 @@ function App() {
       }
     }, 100);
   };
+
+  //Function to render taskpresent component
   const taskPresent = () => {
     if (title !== '') {
       settaskadded(!taskadded);
@@ -63,7 +70,6 @@ function App() {
         ) : (
           <Welcome click={clickHandler} />
         )}
-        {/* <Items/> */}
       </div>
     </>
   );
